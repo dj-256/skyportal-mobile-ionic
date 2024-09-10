@@ -13,9 +13,14 @@ import { useMutation } from "@tanstack/react-query";
  * @param {Object} props
  * @param {string} props.candidateId
  * @param {boolean} props.isInView
+ * @param {() => void} [props.onPlotClick]
  * @returns {JSX.Element}
  */
-const CandidatePhotometryChartBase = ({ candidateId, isInView }) => {
+const CandidatePhotometryChartBase = ({
+  candidateId,
+  isInView,
+  onPlotClick = () => {},
+}) => {
   const [hasLoaded, setHasLoaded] = useState(false);
   const [loaderIsHidden, setLoaderIsHidden] = useState(false);
   /** @type {React.MutableRefObject<HTMLDivElement|null>} */
@@ -89,9 +94,15 @@ const CandidatePhotometryChartBase = ({ candidateId, isInView }) => {
     };
   }, [hasLoaded, loaderIsHidden]);
 
+  const handlePlotClick = () => {
+    onPlotClick();
+    console.log("Plot clicked");
+  };
+
   return (
     <div className="candidate-photometry-chart">
       <div
+        onClick={() => handlePlotClick()}
         className="canvas-container"
         ref={container}
         style={{ visibility: hasLoaded ? "visible" : "hidden" }}

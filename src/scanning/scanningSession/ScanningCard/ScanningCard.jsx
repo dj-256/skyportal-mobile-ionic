@@ -14,6 +14,7 @@ import { ScanningCardSkeleton } from "./ScanningCardSkeleton.jsx";
  * @param {number} props.currentIndex
  * @param {number} props.nbCandidates
  * @param {boolean} props.isInView
+ * @param {(candidateId: string) => void} props.onPlotClick
  * @returns {JSX.Element}
  */
 const ScanningCardBase = ({
@@ -22,6 +23,7 @@ const ScanningCardBase = ({
   currentIndex,
   nbCandidates,
   isInView,
+  onPlotClick,
 }) => {
   return (
     <div className="scanning-card-container">
@@ -48,6 +50,7 @@ const ScanningCardBase = ({
           <CandidatePhotometryChart
             candidateId={candidate.id}
             isInView={isInView}
+            onPlotClick={() => onPlotClick(candidate.id)}
           />
         </div>
       </div>

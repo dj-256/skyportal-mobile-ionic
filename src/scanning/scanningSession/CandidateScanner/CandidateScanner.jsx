@@ -1,5 +1,6 @@
 import "./CandidateScanner.scss";
 import {
+  IonBackdrop,
   IonButton,
   IonIcon,
   IonModal,
@@ -29,6 +30,7 @@ import { QUERY_KEYS } from "../../../common/constants.js";
 import { useMutation } from "@tanstack/react-query";
 import { parseIntList } from "../../scanningLib.js";
 import { ScanningEnd } from "../ScanningEnd/ScanningEnd.jsx";
+import { DetailPhotometryPlot } from "../DetailPhotometryPlot/DetailPhotometryPlot.jsx";
 
 export const CandidateScanner = () => {
   const numPerPage = 25;
@@ -41,6 +43,8 @@ export const CandidateScanner = () => {
   const modal = useRef(null);
 
   const [isLastBatch, setIsLastBatch] = useState(false);
+
+  const [showDetailPlot, setShowDetailPlot] = useState(false);
 
   /** @type {React.MutableRefObject<import("../../scanningLib").ScanningRecap>} */
   // @ts-ignore
@@ -330,6 +334,9 @@ export const CandidateScanner = () => {
                 isInView={slidesInView.includes(index)}
                 // @ts-ignore
                 nbCandidates={data.pages[0].totalMatches}
+                onPlotClick={(candidateId) => {
+                  setShowDetailPlot(true);
+                }}
               />
             </div>
           )) ?? (
@@ -388,6 +395,13 @@ export const CandidateScanner = () => {
           candidate={currentCandidate}
         />
       </IonModal>
+
+      {showDetailPlot && currentCandidate && (
+        <div className="detail-plot-overlay">
+          <IonBackdrop visible />
+          <DetailPhotometryPlot candidateId={currentCandidate?.id} />
+        </div>
+      )}
     </div>
   );
 };
