@@ -12,7 +12,8 @@
     "deploy:android": "npx cap run android",
     "deploy:ios": "npx cap run ios",
     "test.unit": "vitest",
-    "lint": "eslint"
+    "lint": "eslint",
+    "test": "vitest"
   },
   "dependencies": {
     "@capacitor/android": "^6.0.0",

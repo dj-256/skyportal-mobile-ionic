@@ -10,7 +10,10 @@ import { ErrorMessage } from "../ErrorMessage/ErrorMessage.jsx";
 export const ErrorMessageContainer = ({ errors, errorNames }) => {
   if (errorNames.some((name) => errors[name])) {
     return (
-      <div className="error-message-container">
+      <div
+        data-testid="error-message-container"
+        className="error-message-container"
+      >
         {errorNames.map((name) => (
           <ErrorMessage key={name} errors={errors} name={name} />
         ))}
