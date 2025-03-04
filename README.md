@@ -172,7 +172,18 @@ export const NewComponent = ({ paramA, paramB }) => {
 
 #### Styling
 
-This project uses Sass for styling components, although you should strive to use Ionic components as much as you can.
+This project uses Sass for styling components. Sass supports two different syntaxes. Each one can load the other:
+- Sass (Indented Syntax): 
+    Uses indentation instead of `{}` and `;`, making it more concise but less familiar for those used to CSS.
+    Files use the `.sass` extension. 
+- SCSS (Sassy CSS): Fully compatible with CSS, using `{}` and `;` like regular stylesheets.
+    It allows nesting and variables while keeping a familiar structure.
+    Files use the `.scss` extension.
+
+This project uses SCSS, which is more commonly used today due to its familiarity with CSS.
+You can find more about this on the [Sass documentation](https://sass-lang.com/documentation).
+
+Although you should strive to use Ionic components as much as you can.
 As they come with built-in styles that will integrate smoothly with the rest of the UI, you should try to write as little
 styling code as you can and rely more on Ionic components. If you do need some custom styles, a good practice is to
 always give a style class to your component's top-level element. For example in the CandidateScanner component:
