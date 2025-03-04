@@ -92,11 +92,10 @@
 
 import { Clipboard } from "@capacitor/clipboard";
 import { useIonToast } from "@ionic/react";
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 import moment from "moment-timezone";
 
 import { SAVED_STATUS } from "../common/common.lib.js";
-import { UserContext } from "../common/common.context.js";
 
 /**
  * @type {Object<ThumbnailType, ThumbnailType>}
@@ -112,12 +111,13 @@ export const THUMBNAIL_TYPES = {
 
 /**
  * Get the link for the survey and alt text for thumbnail
+ * @param {string} instanceUrl - Instance URL
  * @param {string} name - Thumbnail type
  * @param {number} ra - Right ascension
  * @param {number} dec - Declination
  * @returns {{alt: string, link: string}}
  */
-export const getThumbnailAltAndSurveyLink = (name, ra, dec) => {
+export const getThumbnailAltAndSurveyLink = (instanceUrl, name, ra, dec) => {
   let alt = "";
   let link = "";
   switch (name) {
@@ -143,7 +143,7 @@ export const getThumbnailAltAndSurveyLink = (name, ra, dec) => {
       link = `https://ps1images.stsci.edu/cgi-bin/ps1cutouts?pos=${ra}+${dec}&filter=color&filter=g&filter=r&filter=i&filter=z&filter=y&filetypes=stack&auxiliary=data&size=240&output_size=0&verbose=0&autoscale=99.500000&catlist=`;
       break;
     default:
-      link = "https://fritz.science/static/images/outside_survey.png";
+      link = `${instanceUrl}/static/images/outside_survey.png`;
       break;
   }
   return { alt, link };
@@ -167,19 +167,19 @@ export const getThumbnailHeader = (type) => {
 
 /**
  * Get the URL of the thumbnail image
+ * @param {string} instanceUrl
  * @param {Candidate} candidate
  * @param {string} type
  * @returns {string}
  */
-export function getThumbnailImageUrl(candidate, type) {
-  const { userInfo } = useContext(UserContext);
+export function getThumbnailImageUrl(instanceUrl, candidate, type) {
   let thumbnail = candidate.thumbnails.find((t) => t.type === type);
   if (!thumbnail) {
     throw new Error(`No thumbnail of type ${type} found`);
   }
   let res = thumbnail.public_url;
   if (type === "new" || type === "ref" || type === "sub") {
-    res = userInfo.instance.url + res;
+    res = instanceUrl + res;
   }
   return res;
 }
