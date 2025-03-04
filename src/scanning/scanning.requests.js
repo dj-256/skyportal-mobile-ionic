@@ -41,7 +41,6 @@ export async function searchCandidates({
   pageNumber,
   numPerPage = CANDIDATES_PER_PAGE,
 }) {
-  // example: https://preview.fritz.science/api/candidates?pageNumber=1&numPerPage=50&groupIDs=4&savedStatus=savedToAnySelected&listNameReject=rejected_candidates&startDate=2024-07-01T21%3A27%3A27.232Z
   let response = await CapacitorHttp.get({
     url: `${userInfo.instance.url}/api/candidates`,
     headers: {
