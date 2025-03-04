@@ -1,4 +1,3 @@
-import "./ScanningOptionsProgram.scss";
 import { IonButton, IonChip, IonIcon, IonItem, IonLabel, IonList, IonModal, IonToggle } from "@ionic/react";
 import { pencil } from "ionicons/icons";
 import {

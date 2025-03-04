@@ -1,4 +1,3 @@
-import "./ScanningOptionsDate.scss";
 import { IonDatetimeButton, IonItem, IonLabel, IonList, IonModal } from "@ionic/react";
 import moment from "moment-timezone";
 import { ControlledDateTime } from "../../../../common/components/ControlledDateTime/ControlledDateTime.jsx";

@@ -1,4 +1,3 @@
-import "./ScanningOptionsDiscarding.scss";
 import {
   IonButton,
   IonChip,

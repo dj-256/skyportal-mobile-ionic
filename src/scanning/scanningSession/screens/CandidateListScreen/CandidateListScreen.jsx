@@ -1,4 +1,3 @@
-import "./CandidateListScreen.scss";
 import { IonHeader, IonPage, IonTitle, IonToolbar } from "@ionic/react";
 
 export const CandidateListScreen = () => {
