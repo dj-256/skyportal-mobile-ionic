@@ -92,10 +92,11 @@
 
 import { Clipboard } from "@capacitor/clipboard";
 import { useIonToast } from "@ionic/react";
-import { useCallback } from "react";
+import { useCallback, useContext } from "react";
 import moment from "moment-timezone";
 
 import { SAVED_STATUS } from "../common/common.lib.js";
+import { UserContext } from "../common/common.context.js";
 
 /**
  * @type {Object<ThumbnailType, ThumbnailType>}
@@ -171,13 +172,14 @@ export const getThumbnailHeader = (type) => {
  * @returns {string}
  */
 export function getThumbnailImageUrl(candidate, type) {
+  const { userInfo } = useContext(UserContext);
   let thumbnail = candidate.thumbnails.find((t) => t.type === type);
   if (!thumbnail) {
     throw new Error(`No thumbnail of type ${type} found`);
   }
   let res = thumbnail.public_url;
   if (type === "new" || type === "ref" || type === "sub") {
-    res = "https://preview.fritz.science" + res;
+    res = userInfo.instance.url + res;
   }
   return res;
 }
