@@ -1,5 +1,4 @@
 import { IonContent, IonPage, IonSpinner } from "@ionic/react";
-import "./CheckQRCodeScreen.scss";
 import { useHistory, useLocation } from "react-router";
 import { useContext, useEffect, useState } from "react";
 import { fetchUserProfile } from "../../onboarding.lib.js";
