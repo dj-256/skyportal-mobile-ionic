@@ -10,8 +10,7 @@ import {
   IonToolbar,
 } from "@ionic/react";
 import { useUserAccessibleGroups } from "../../../../common/common.hooks.js";
-import { UserContext } from "../../../../common/common.context.js";
-import { useCallback, useContext } from "react";
+import { useCallback } from "react";
 import { useScanningProfiles } from "../../../scanning.hooks.js";
 import { ProfileListItem } from "../../components/ProfileListItem/ProfileListItem.jsx";
 import { useHistory } from "react-router";
@@ -19,8 +18,7 @@ import { navigateWithParams } from "../../../../common/common.lib.js";
 
 export const ScanningProfilesScreen = () => {
   const history = useHistory();
-  const { userInfo } = useContext(UserContext);
-  const { profiles } = useScanningProfiles(userInfo);
+  const { profiles } = useScanningProfiles();
   const { userAccessibleGroups } = useUserAccessibleGroups();
   const defaultProfileIndex = profiles?.findIndex((profile) => profile.default);
 
