@@ -143,7 +143,7 @@ export const getThumbnailAltAndSurveyLink = (name, ra, dec) => {
       link = `https://ps1images.stsci.edu/cgi-bin/ps1cutouts?pos=${ra}+${dec}&filter=color&filter=g&filter=r&filter=i&filter=z&filter=y&filetypes=stack&auxiliary=data&size=240&output_size=0&verbose=0&autoscale=99.500000&catlist=`;
       break;
     default:
-      link = "https://fritz.science//static/images/outside_survey.png";
+      link = "https://fritz.science/static/images/outside_survey.png";
       break;
   }
   return { alt, link };
