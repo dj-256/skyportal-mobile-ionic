@@ -69,7 +69,7 @@ export const useSearchCandidates = () => {
  * @returns {{profiles: import("../onboarding/onboarding.lib.js").ScanningProfile[] | undefined, status: import("@tanstack/react-query").QueryStatus, error: any | undefined}}
  */
 export const useScanningProfiles = () => {
-  const userInfo = useContext(UserContext);
+  const { userInfo } = useContext(UserContext);
   const {
     data: profiles,
     status,
