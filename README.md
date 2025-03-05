@@ -120,6 +120,7 @@ the [vite documentation](https://vitejs.dev/guide/env-and-mode).
 | `VITE_SKYPORTAL_INSTANCE_URL`  | `string`  | `undefined` | The URL of the SkyPortal instance to connect to. This is required if `VITE_SKIP_ONBOARDING` is set to `true`.                                                                              |
 | `VITE_SKYPORTAL_INSTANCE_NAME` | `string`  | `undefined` | The name of the SkyPortal instance to connect to. This is required if `VITE_SKIP_ONBOARDING` is set to `true`.                                                                             |
 | `VITE_CLEAR_AUTH`              | `boolean` | `false`     | Clears the authentication token and instance URL from the local storage. This is useful when you want to reset the app to the onboarding state each time you start the development server. |
+| `VITE_SCANNING_START_DATE`     | `string`  | `undefined` | The pre-filled start date on the scanning form. This is useful when you want to test the scanning feature with a specific date.                                                            |
 
 ## Directory structure
 
